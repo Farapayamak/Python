@@ -31,9 +31,6 @@ class Soap_Client:
                 if isinstance(args[key][0], str):
                     array_of_string_type = client.get_element("ns0:ArrayOfString")
                     args[key] = array_of_string_type(args[key])
-                # elif isinstance(args[key][0], int):
-                #     array_of_long_type = client.get_element("ns0:ArrayOfLong")
-                #     args[key] = array_of_long_type(args[key])
         return getattr(client.service, method)(**args)
 
 
@@ -41,11 +38,39 @@ class Soap_Client:
     def GetCredit(self):
         return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {})
 
+    def GetDeliveries(self, recIds: list):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'recIds': recIds})
+
+    def GetDeliveries3(self, recId: list):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'recId': recId})
+
+    def GetSmsPrice(self, irancellCount, mtnCount, _from, text):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'irancellCount': irancellCount, 'mtnCount': mtnCount, 'from': _from, 'text': text})
+
+    def SendByBaseNumber(self, text: list, to, bodyId):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'text': text, 'to': to, 'bodyId': bodyId})
+
+    def SendByBaseNumber2(self, text, to, bodyId):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'text': text, 'to': to, 'bodyId': bodyId})
+
+    def SendByBaseNumber3(self, text, to):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'text': text, 'to': to})
+
+    def SendSimpleSMS(self, to: list, _from, text, isflash = False):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash})
+        
     def SendSimpleSMS2(self, to, _from, text, isflash = False):
         return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash})
     
-    def SendSimpleSMS(self, to: list, _from, text, isflash = False):
-        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash})
+    def SendSms(self, to: list, _from, text, udh, recId: list, status, isflash = False):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'udh': udh, 'recId': recId, 'status': status})
 
-    def SendMultipleSMS(self, to: list, _from, text, udh, isflash = False):
-        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'udh': udh})
+    def SendSms2(self, to: list, _from, text, udh, recId: list, status, filterId, isflash = False):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'udh': udh, 'recId': recId, 'status': status, 'filterId': filterId})
+
+    def SendMultipleSMS(self, to: list, _from, text: list, udh, recId: list, status, isflash = False):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'udh': udh, 'recId': recId, 'status': status})
+
+    def SendMultipleSMS(self, to: list, _from: list, text: list, udh, recId: list, status, isflash = False):
+        return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'udh': udh, 'recId': recId, 'status': status})
+    
