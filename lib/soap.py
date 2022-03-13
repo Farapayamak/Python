@@ -110,4 +110,77 @@ class Soap_Client:
 
     # USER webservice
 
+    def AddUser(self, productId, descriptions, mobileNumber, emailAddress, nationalCode, name, family, corporation, phone, fax, address, postalCode, certificateNumber):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'productId': productId, 'descriptions': descriptions, 'mobileNumber': mobileNumber, 'emailAddress': emailAddress, 'nationalCode': nationalCode, 'name': name, 'family': family, 'corporation': corporation, 'phone': phone, 'fax': fax, 'address': address, 'postalCode': postalCode, 'certificateNumber': certificateNumber})
+
+    def AddUserWithLocation(self, productId, descriptions, mobileNumber, emailAddress, nationalCode, name, family, corporation, phone, fax, address, postalCode, certificateNumber, country, province, city):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'productId': productId, 'descriptions': descriptions, 'mobileNumber': mobileNumber, 'emailAddress': emailAddress, 'nationalCode': nationalCode, 'name': name, 'family': family, 'corporation': corporation, 'phone': phone, 'fax': fax, 'address': address, 'postalCode': postalCode, 'certificateNumber': certificateNumber, 'country': country, 'province': province, 'city': city})
+
+    def AddUserWithMobileNumber(self, productId, mobileNumber, firstName, lastName, email):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'productId': productId, 'mobileNumber': mobileNumber, 'firstName': firstName, 'lastName': lastName, 'email': email})
+
+    def AddUserWithMobileNumber2(self, productId, mobileNumber, firstName, lastName, email, userName):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'productId': productId, 'mobileNumber': mobileNumber, 'firstName': firstName, 'lastName': lastName, 'email': email, 'userName': userName})
+
+    def AddUserWithUserNameAndPass(self, targetUserName, targetUserPassword, productId, descriptions, mobileNumber, emailAddress, nationalCode, name, family, corporation, phone, fax, address, postalCode, certificateNumber):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUserName': targetUserName, 'targetUserPassword': targetUserPassword, 'productId': productId, 'descriptions': descriptions, 'mobileNumber': mobileNumber, 'emailAddress': emailAddress, 'nationalCode': nationalCode, 'name': name, 'family': family, 'corporation': corporation, 'phone': phone, 'fax': fax, 'address': address, 'postalCode': postalCode, 'certificateNumber': certificateNumber})
+
+    def AuthenticateUser(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def ChangeUserCredit(self, amount, description, targetUsername, GetTax):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'amount': amount, 'description': description, 'targetUsername': targetUsername, 'GetTax': GetTax})
+
+    def DeductUserCredit(self, amount, description):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'amount': amount, 'description': description})
+
+    def ForgotPassword(self, mobileNumber, emailAddress, targetUsername):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'mobileNumber': mobileNumber, 'emailAddress': emailAddress, 'targetUsername': targetUsername})
+
+    def GetCities(self, provinceId):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'provinceId': provinceId})
+
+    def GetEnExpireDate(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def GetExpireDate(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def GetProvinces(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def GetUserBasePrice(self, targetUsername):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername})
+
+    def GetUserCredit(self, targetUsername):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername})
+
+    def GetUserCredit2(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def GetUserDetails(self, targetUsername):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername})
+
+    def GetUserIsExist(self, targetUsername):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername})
+
+    def GetUserNumbers(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def GetUserTransactions(self, targetUsername, creditType, dateFrom, dateTo, keyword):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername, 'creditType': creditType, 'dateFrom': dateFrom, 'dateTo': dateTo, 'keyword': keyword})
+
+    def GetUserWallet(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def GetUserWalletTransaction(self, dateFrom, dateTo, count, startIndex, payType, payLoc):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'dateFrom': dateFrom, 'dateTo': dateTo, 'count': count, 'startIndex': startIndex, 'payType': payType, 'payLoc': payLoc})
+
+    def GetUsers(self):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {})
+
+    def RemoveUser(self, targetUsername):
+        return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername})
+
+
     
