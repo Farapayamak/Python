@@ -74,3 +74,40 @@ class Soap_Client:
     def SendMultipleSMS(self, to: list, _from: list, text: list, udh, recId: list, status, isflash = False):
         return self.__exec(self.SEND_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'udh': udh, 'recId': recId, 'status': status})
     
+
+    #RECEIVE webservice
+
+    def ChangeMessageIsRead(self, msgIds):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'msgIds': msgIds})
+
+    def GetInboxCount(self, isRead: bool):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'isRead': isRead})
+
+    def GetLatestReceiveMsg(self, sender, receiver):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'sender': sender, 'receiver': receiver})
+
+    def GetMessages(self, location, _from, index, count):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'location': location, 'from': _from, 'index': index, 'count': count})
+
+    def GetMessagesAfterID(self, location, _from, count, msgId):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'location': location, 'from': _from, 'count': count, 'msgId': msgId})
+
+    def GetMessagesFilterByDate(self, location, _from, index, count, dateFrom, dateTo, isRead: bool):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'location': location, 'from': _from, 'index': index, 'count': count, 'dateFrom': dateFrom, 'dateTo': dateTo, 'isRead': isRead})
+
+    def GetMessagesReceptions(self, msgId, fromRows):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'msgId': msgId, 'fromRows': fromRows})
+
+    def GetMessagesWithChangeIsRead(self, location, _from, index, count, isRead, changeIsRead):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'location': location, 'from': _from, 'index': index, 'count': count, 'isRead': isRead, 'changeIsRead': changeIsRead})
+
+    def GetOutBoxCount(self):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {})
+
+    def RemoveMessages(self, location, msgIds):
+        return self.__exec(self.RECEIVE_ENDPOINT, inspect.stack()[0][3], {'location': location, 'msgIds': msgIds})
+
+
+    # USER webservice
+
+    
