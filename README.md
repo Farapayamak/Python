@@ -32,9 +32,9 @@ We support a small number of methods in REST against the SOAP web service that s
 We're currently supporting the following methods in REST web service:
 
 ```python
-restClient.SendSMS(to, from, text, isFlash)
+restClient.SendSMS(to, _from, text, isFlash)
 restClient.GetDeliveries2(recId)
-restClient.GetMessages(location, from, index, count)
+restClient.GetMessages(location, _from, index, count)
 restClient.GetCredit()
 restClient.GetBasePrice()
 restClient.GetUserNumbers()
