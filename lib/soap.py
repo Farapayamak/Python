@@ -183,4 +183,101 @@ class Soap_Client:
         return self.__exec(self.USER_ENDPOINT, inspect.stack()[0][3], {'targetUsername': targetUsername})
 
 
+    # VOICE webservice
+
+    def SendBulkSpeechText(self, title, body, receivers, DateToSend, repeatCount):
+        return self.__exec(self.VOICE_ENDPOINT, inspect.stack()[0][3], {'title': title, 'body': body, 'receivers': receivers, 'DateToSend': DateToSend, 'repeatCount': repeatCount})
+
+    def SendBulkVoiceSMS(self, title, voiceFileId, receivers, DateToSend, repeatCount):
+        return self.__exec(self.VOICE_ENDPOINT, inspect.stack()[0][3], {'title': title, 'voiceFileId': voiceFileId, 'receivers': receivers, 'DateToSend': DateToSend, 'repeatCount': repeatCount})
+
+    def UploadVoiceFile(self, title, base64StringFile):
+        return self.__exec(self.VOICE_ENDPOINT, inspect.stack()[0][3], {'title': title, 'base64StringFile': base64StringFile})
+
     
+    # CONTACT webservice
+
+    def AddContact(self, groupIds, firstname, lastname, nickname, corporation, mobilenumber, phone, fax, birthdate, email, gender, province, city,  address, postalCode, additionaldate, additionaltext, descriptions):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'groupIds': groupIds, 'firstname': firstname, 'lastname': lastname, 'nickname': nickname, 'corporation': corporation, 'mobilenumber': mobilenumber, 'phone': phone, 'fax': fax, 'birthdate': birthdate, 'email': email, 'gender': gender, 'province': province, 'city': city, 'address': address, 'postalCode': postalCode, 'additionaldate': additionaldate, 'additionaltext': additionaltext, 'descriptions': descriptions})
+
+    def AddContactEvents(self, contactId, eventName, eventType, eventDate):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'contactId': contactId, 'eventName': eventName, 'eventType': eventType, 'eventDate': eventDate})
+
+    def AddGroup(self, groupName, Descriptions, showToChilds):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'groupName': groupName, 'Descriptions': Descriptions, 'showToChilds': showToChilds})
+
+    def ChangeContact(self, contactId, mobilenumber, firstname, lastname, nickname, corporation, phone, fax, email, gender, province, city, address, postalCode, additionaltext, descriptions, contactStatus):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'contactId': contactId, 'mobilenumber': mobilenumber, 'firstname': firstname, 'lastname': lastname, 'nickname': nickname, 'corporation': corporation, 'phone': phone, 'fax': fax, 'email': email, 'gender': gender, 'province': province, 'city': city, 'address': address, 'postalCode': postalCode, 'additionaltext': additionaltext, 'descriptions': descriptions, 'contactStatus': contactStatus})
+
+    def ChangeGroup(self, groupId, groupName, Descriptions, showToChilds, groupStatus):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'groupId': groupId, 'groupName': groupName, 'Descriptions': Descriptions, 'showToChilds': showToChilds, 'groupStatus': groupStatus})
+
+    def CheckMobileExistInContact(self, mobileNumber):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'mobileNumber': mobileNumber})
+
+    def GetContactEvents(self, contactId):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'contactId': contactId})
+
+    def GetContacts(self, groupId, keyword, _from, count):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'groupId': groupId, 'keyword': keyword, 'from': _from, 'count': count})
+
+    def GetContactsByID(self, contactId, status):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'contactId': contactId, 'status': status})
+
+    def GetGroups(self):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {})
+
+    def MergeGroups(self, originGroupId, destinationGroupId, deleteOriginGroup):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'originGroupId': originGroupId, 'destinationGroupId': destinationGroupId, 'deleteOriginGroup': deleteOriginGroup})
+
+    def RemoveContact(self, mobilenumber):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'mobilenumber': mobilenumber})
+
+    def RemoveContactByContactID(self, contactId):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'contactId': contactId})
+
+    def RemoveGroup(self, groupId):
+        return self.__exec(self.CONTACT_ENDPOINT, inspect.stack()[0][3], {'groupId': groupId})
+
+
+
+    # SCHEDULE webservice
+
+    def AddNewMultipleSchedule(self, to: list, _from, text: list, isflash, scheduleDateTime: list, period):
+        return self.__exec(self.SCHEDULE_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'scheduleDateTime': scheduleDateTime, 'period': period})
+
+    def AddNewUsance(self, to, _from, text, isflash, scheduleStartDateTime, countrepeat, scheduleEndDateTime, periodType):
+        return self.__exec(self.SCHEDULE_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'scheduleStartDateTime': scheduleStartDateTime, 'countrepeat': countrepeat, 'scheduleEndDateTime': scheduleEndDateTime, 'periodType': periodType})
+
+    def AddSchedule(self, to, _from, text, isflash, scheduleDateTime, period):
+        return self.__exec(self.SCHEDULE_ENDPOINT, inspect.stack()[0][3], {'to': to, 'from': _from, 'text': text, 'isflash': isflash, 'scheduleDateTime': scheduleDateTime, 'period': period})
+
+    def GetScheduleDetails(self, scheduleId):
+        return self.__exec(self.SCHEDULE_ENDPOINT, inspect.stack()[0][3], {'scheduleId': scheduleId})
+
+    def GetScheduleStatus(self, scheduleId):
+        return self.__exec(self.SCHEDULE_ENDPOINT, inspect.stack()[0][3], {'scheduleId': scheduleId})
+
+    def RemoveSchedule(self, scheduleId):
+        return self.__exec(self.SCHEDULE_ENDPOINT, inspect.stack()[0][3], {'scheduleId': scheduleId})
+
+
+    # BULK webservice
+
+    def AddNumberBulk(self, _from, title, message, receivers, DateToSend):
+        return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'from': _from, 'title': title, 'message': message, 'receivers': receivers, 'DateToSend': DateToSend})
+
+    def BulkReception(self, bulkId, maximumRows, startRowIndex):
+        return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'bulkId': bulkId, 'maximumRows': maximumRows, 'startRowIndex': startRowIndex})
+
+    def BulkReceptionCount(self, bulkId):
+        return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'bulkId': bulkId})
+
+    def GetBulkDeliveries(self, recIds: list):
+        return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'recIds': recIds})
+
+    def GetBulkDeliveries2(self, recId):
+        return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'recId': recId})
+
+    def GetBulkDetails(self, bulkId):
+        return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'bulkId': bulkId})
