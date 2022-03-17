@@ -1,5 +1,7 @@
 from lib.rest import Rest_Client
-
+# Use bellow lines to consume with a `pip install farapayamak`
+# from farapayamak import rest
+# Rest_Client = rest.Rest_Client
 
 restClient = Rest_Client('username', 'password')
 result = restClient.SendSMS('09123456789', '5000xxx', 'test sms')

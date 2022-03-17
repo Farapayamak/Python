@@ -12,6 +12,8 @@ You can run the following **pip** command to have it:
 pip install farapayamak
 ```
 
+Farapayamak package **requires** installing [`zeep`](https://pypi.org/project/zeep/) to work.
+
 ## Usage
 This is the simple usage for both REST and SOAP APIs:
 ```python
