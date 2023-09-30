@@ -12,6 +12,7 @@ class Soap_Client:
     CONTACT_ENDPOINT = 'http://api.payamak-panel.com/post/contacts.asmx?wsdl'
     SCHEDULE_ENDPOINT = 'http://api.payamak-panel.com/post/schedule.asmx?wsdl'
     BULK_ENDPOINT = 'http://api.payamak-panel.com/post/newbulks.asmx?wsdl'
+    SMART_ENDPOINT = 'https://api.payamak-panel.com/post/Smartsms.asmx?wsdl'
 
     def __init__(self, username, password):
         self.__username = username
@@ -281,3 +282,16 @@ class Soap_Client:
 
     def GetBulkDetails(self, bulkId):
         return self.__exec(self.BULK_ENDPOINT, inspect.stack()[0][3], {'bulkId': bulkId})
+    
+
+
+    # SMART webservice
+
+    def SendSmartSMS(self, to, text, fromNumber, fromSupportOne, fromSupportTwo):
+        return self.__exec(self.SMART_ENDPOINT, inspect.stack()[0][3], {'to': to, 'text': text, 'from': fromNumber, 'fromSupportOne': fromSupportOne, 'fromSupportTwo': fromSupportTwo})
+    
+    def SendMultipleSmartSMS(self, to, text, fromNumber, fromSupportOne, fromSupportTwo):
+        return self.__exec(self.SMART_ENDPOINT, inspect.stack()[0][3], {'to': to, 'text': text, 'from': fromNumber, 'fromSupportOne': fromSupportOne, 'fromSupportTwo': fromSupportTwo})
+    
+    def GetSmartSMSDeliveries(self, ids):
+        return self.__exec(self.SMART_ENDPOINT, inspect.stack()[0][3], {'Ids': ids})
